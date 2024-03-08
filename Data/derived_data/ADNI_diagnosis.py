@@ -13,7 +13,7 @@ column_names = ['Phase',
                'Diagnosis']
 
 
-with open('../../raw_tables/ADNI/ADNI_DXSUM_PDXCONV.csv') as csvfile:
+with open('../raw_data/ADNI_DXSUM_PDXCONV.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         content = {}

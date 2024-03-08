@@ -18,7 +18,7 @@ column_names = ['Phase',
                'Visuospatial',
                'mmse']
 
-with open('../../raw_tables/ADNI/ADNI_MMSE.csv') as csvfile:
+with open('../raw_data/ADNI_MMSE.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         content = {}

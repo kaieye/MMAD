@@ -25,7 +25,7 @@ class TableData:
 
     def addColumns_demograph(self):
         self.columnNames.extend(['age', 'gender', 'education', 'hispanic', 'race'])
-        targetTable = '../../raw_tables/ADNI/PTDEMOG.csv'  # to get age and gender which table you need to look into
+        targetTable = '../raw_data/PTDEMOG.csv'  # to get age and gender which table you need to look into
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'sc' and row['RID'] in self.content:
@@ -50,7 +50,7 @@ class TableData:
 
     def addColumns_apoe(self):
         self.columnNames.extend(['apoe'])
-        targetTable = '../../raw_tables/ADNI/APOERES.csv'  # to get age and gender which table you need to look into
+        targetTable = '../raw_data/APOERES.csv'  # to get age and gender which table you need to look into
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['RID'] in self.content:
@@ -62,8 +62,8 @@ class TableData:
     def addColumns_diagnosis(self):
         variables = ['NC', 'MCI', 'DE', 'COG', 'AD', 'PD', 'FTD', 'VD', 'DLB', 'PDD', 'ADD', 'OTHER']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/ADNI_DXSUM_PDXCONV.csv'
-        exclusTable = '../../raw_tables/ADNI/EXCLUSIO.csv'
+        targetTable = '../raw_data/ADNI_DXSUM_PDXCONV.csv'
+        exclusTable = '../raw_data/EXCLUSIO.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'bl' and row['RID'] in self.content:
@@ -109,7 +109,7 @@ class TableData:
         variables = ['mmse']
         old_variables = ['mmse']
         self.columnNames.extend(variables)
-        targetTable = '../../derived_tables/ADNI/ADNI_MMSE.csv'
+        targetTable = '../derived_data/ADNI_MMSE.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'sc' and row['RID'] in self.content:
@@ -120,7 +120,7 @@ class TableData:
         variables = ['cdr', 'cdrSum']
         old_variables = ['CDMEMORY','CDORIENT','CDJUDGE','CDCOMMUN','CDHOME','CDCARE']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/CDR.csv'
+        targetTable = '../raw_data/CDR.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'sc' and row['RID'] in self.content:
@@ -132,8 +132,8 @@ class TableData:
 
     def addColumns_tesla(self):
         self.columnNames.extend(['Tesla'])
-        T15Table = self.readcsv('../../raw_tables/ADNI/MRIMETA.csv')
-        T3Table = self.readcsv('../../raw_tables/ADNI/MRI3META.csv')
+        T15Table = self.readcsv('../raw_data/MRIMETA.csv')
+        T3Table = self.readcsv('../raw_data/MRI3META.csv')
         for row in T15Table:
             if row['PHASE'] == 'ADNI1' and row['VISCODE'] == 'sc' and row['RID'] in self.content:
                 self.content[row['RID']]['Tesla'] = row['FIELD_STRENGTH'][:-1]
@@ -145,7 +145,7 @@ class TableData:
         variables = [ 'adas_q1','adas_q2','adas_q3','adas_q4','adas_q5','adas_q6','adas_q7','adas_q8','adas_q9','adas_q10','adas_q11','adas_q12','adas_q14', 'adas_total11', 'adas_totalmod']
         old_variables = ['Q1','Q2','Q3','Q4','Q5','Q6','Q7','Q8','Q9','Q10','Q11','Q12','Q14', 'TOTAL11', 'TOTALMOD']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/ADASSCORES.csv'
+        targetTable = '../raw_data/ADASSCORES.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['VISCODE'] == 'bl' and row['RID'] in self.content:
@@ -156,7 +156,7 @@ class TableData:
         variables = ['trailA', 'trailB']
         old_variables = ['TMT_PtA_Complete', 'TMT_PtB_Complete']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/ITEM.csv'
+        targetTable = '../raw_data/ITEM.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['VISCODE'] == 'bl' and row['RID'] in self.content:
@@ -170,7 +170,7 @@ class TableData:
                      'digitB', 'digitBL', 'digitF', 'digitFL']
         old_variables = ['LIMMTOTAL', 'LDELTOTAL', 'BNTTOTAL', 'CATANIMSC', 'CATVEGESC']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/NEUROBAT.csv'
+        targetTable = '../raw_data/NEUROBAT.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase']=='ADNI1' and row['VISCODE'] in ['sc', 'bl'] and row['RID'] in self.content:
@@ -197,7 +197,7 @@ class TableData:
         variables = ['moca']
         old_variables = ['MOCA']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/ADNIMERGE.csv'
+        targetTable = '../raw_data/ADNIMERGE.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['ORIGPROT'] == 'ADNI1' and row['VISCODE'] == 'bl' and row['RID'] in self.content:
@@ -212,7 +212,7 @@ class TableData:
                          'NPIE', 'NPIF', 'NPIG', 'NPIH',
                          'NPII', 'NPIJ', 'NPIK', 'NPIL']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/NPIQ.csv'
+        targetTable = '../raw_data/NPIQ.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'bl' and row['RID'] in self.content:
@@ -228,7 +228,7 @@ class TableData:
         old_variables = ['FAQFINAN', 'FAQFORM', 'FAQSHOP', 'FAQGAME', 'FAQBEVG',
                          'FAQMEAL', 'FAQEVENT', 'FAQTV', 'FAQREM', 'FAQTRAVL']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/FAQ.csv'
+        targetTable = '../raw_data/FAQ.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'bl' and row['RID'] in self.content:
@@ -239,7 +239,7 @@ class TableData:
         variables = ['his_CVHATT', 'his_PSYCDIS', 'his_Alcohol', 'his_SMOKYRS', 'his_PACKSPER']
         old_variables = ['MH4CARD', 'MHPSYCH', 'MH14ALCH', 'MH16BSMOK', 'MH16ASMOK']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/MEDHIST.csv'
+        targetTable = '../raw_data/MEDHIST.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'sc' and row['RID'] in self.content:
@@ -257,7 +257,7 @@ class TableData:
         variables = ['gds']
         old_variables = ['GDTOTAL']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/GDSCALE.csv'
+        targetTable = '../raw_data/GDSCALE.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'sc' and row['RID'] in self.content:
@@ -267,7 +267,7 @@ class TableData:
     def addColumns_FHQ(self):
         variables = ['his_NACCFAM']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/FHQ.csv'
+        targetTable = '../raw_data/FHQ.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['PHASE'] == 'ADNI1' and row['VISCODE'] == 'sc' and row['RID'] in self.content:
@@ -280,7 +280,7 @@ class TableData:
         variables = ['his_CBSTROKE', 'his_HYPERTEN']
         old_variables = ['HMSTROKE', 'HMHYPERT']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/MODHACH.csv'
+        targetTable = '../raw_data/MODHACH.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'sc' and row['RID'] in self.content:
@@ -290,7 +290,7 @@ class TableData:
     def addColumns_dep(self):
         variables = ['his_DEPOTHR']
         self.columnNames.extend(variables)
-        targetTable = '../../raw_tables/ADNI/ADNI_DXSUM_PDXCONV.csv'
+        targetTable = '../raw_data/ADNI_DXSUM_PDXCONV.csv'
         targetTable = self.readcsv(targetTable)
         for row in targetTable:
             if row['Phase'] == 'ADNI1' and row['VISCODE'] == 'bl' and row['RID'] in self.content:

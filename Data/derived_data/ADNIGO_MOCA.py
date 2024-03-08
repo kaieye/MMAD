@@ -43,7 +43,7 @@ def moca_total(row):
     return MOCATOT
 
 
-with open('../../raw_tables/ADNI/MOCA.csv') as csvfile:
+with open('../raw_data/MOCA.csv') as csvfile:
     reader = csv.DictReader(csvfile)
     for row in reader:
         content = {}
