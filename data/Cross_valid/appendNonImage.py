@@ -1,5 +1,5 @@
 import csv
-
+import pandas as pd
 def read_csv_into_dict(filename):
     data = {}
     with open(filename, 'r') as csvfile:
@@ -24,8 +24,13 @@ def append_cols(original_table, data, cols):
         for row in pool:
             spamwriter.writerow([row[col_name] if col_name in row else '' for col_name in column_names])
 
-
 if __name__ == "__main__":
+    data = pd.read_csv('../dataset_data/ADNI1.csv')
+    gender_mapping = {'male': 0, 'female': 1}
+    data['gender'] = data['gender'].map(gender_mapping)
+    race_mapping = {'whi': 0,'blk':1,'mix':2,'ans':3,'ind':4}
+    data['race'] = data['race'].map(race_mapping)
+    data.to_csv('../dataset_data/ADNI1.csv', index=False)
     data = read_csv_into_dict('../dataset_data/ADNI1.csv')
     cols = ["ID", "age", "gender", "apoe", "education", "race",
             "trailA", "trailB", "boston", "digitB", "digitBL", "digitF",
@@ -43,12 +48,8 @@ if __name__ == "__main__":
     for i in range(5):
         for stage in ['train', 'valid', 'test']:
             append_cols('cross{}/{}.csv'.format(i, stage), data, cols)
-
+    
     # for name in ['OASIS']:
     #     data = read_csv_into_dict('../dataset_table/{}/{}.csv'.format(name, name))
     #     for i in range(5):
     #         append_cols('cross{}/OASIS.csv'.format(i), data, cols)
-
-
-
-
