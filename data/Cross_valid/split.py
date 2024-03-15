@@ -17,7 +17,7 @@ def balanced_split(groups, path):
     for case in part1:
         if case['filename'] not in filed and case['ADD'] != '':
             filed.add(case['filename'])
-            if case['ADD'] == '1':
+            if case['ADD'] == '1' or case['ADD'] == '1.0':
                 idx = count_ADD_1.index(min(count_ADD_1))
                 count_ADD_1[idx] += 1
                 count_COG_2[idx] += 1
